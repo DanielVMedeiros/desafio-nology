@@ -1,5 +1,6 @@
 import os
 
+## Código simples para primeira pergunta, usado como base para a criação do backend
 # -----------------------------------------------
 #      Código apenas para calcular o cashBack
 # -----------------------------------------------
@@ -78,10 +79,6 @@ def selecionar_opcoes():
                   escolha_errada();
   except:
       escolha_errada();
-
-
-
-
 
 
 def main():

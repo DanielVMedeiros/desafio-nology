@@ -43,7 +43,7 @@ function App() {
         onChange={(e) => setTipoCliente(e.target.value)}
       >
         <option value="normal">Normal</option>
-        <option value="vip">VIP</option>
+        <option value="VIP">VIP</option>
       </select>
 
       <label className="label">Valor final</label>

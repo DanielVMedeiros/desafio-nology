@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, Request
 from sqlalchemy.orm import Session
 from http import HTTPStatus
-
+from fastapi.middleware.cors import CORSMiddleware
 from database import Base, engine, get_db
 from model.consulta import Consulta
 from schemas.consultaSchema import ConsultaSchema
@@ -10,6 +10,14 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # liberar tudo (dev)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # 🔹 Função para pegar IP
 def get_client_ip(request: Request) -> str:
     forwarded = request.headers.get("X-Forwarded-For")

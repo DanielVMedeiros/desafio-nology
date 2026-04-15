@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from http import HTTPStatus
 from fastapi.middleware.cors import CORSMiddleware
 from database import Base, engine, get_db
+from dotenv import load_dotenv
+import os
 from model.consulta import Consulta
 from schemas.consultaSchema import ConsultaSchema
 
@@ -11,9 +13,16 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 
+load_dotenv()
+
+FRONTEND_URL = os.getenv("FRONTEND_URL")
+
+origins = [
+    FRONTEND_URL
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # liberar tudo (dev)
+    allow_origins=origins,  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -100,7 +100,13 @@ def criar_consulta(
     db.commit()
     db.refresh(nova_consulta)
 
-    return cashback
+    return {
+        "id": nova_consulta.id_consulta,
+        "tipo_cliente": nova_consulta.tipo_cliente,
+        "valor": nova_consulta.valor,
+        "cashback": cashback,
+        "ip": nova_consulta.ip_consulta,
+    }
 
 
 @app.get("/consulta")

@@ -4,6 +4,7 @@ import ConsultasModal from "./components/ConsultasModal";
 import { criarConsulta, listarConsultas } from "./services/api";
 import "./App.css";
 
+
 function App() {
   const [tipoCliente, setTipoCliente] = useState("normal");
   const [valor, setValor] = useState("");
@@ -20,7 +21,7 @@ function App() {
       cashback: 0,
     });
 
-    setCashback(data);
+    setCashback(data.cashback);
     setShowCashbackModal(true);
     setValor("");
   };
@@ -34,7 +35,8 @@ function App() {
   return (
   <div className="container">
     <div className="card">
-      <h1 className="title">💰 Consulta Cashback</h1>
+      <img src="/image.png" alt="Logo" style={{ width: "150px", borderRadius: "10px", alignItems:"center", display: "block" ,margin: "0 auto" }} />
+      <h1 className="title">Calcule o Cashback!</h1>
 
       <label className="label">Tipo de Cliente</label>
       <select
